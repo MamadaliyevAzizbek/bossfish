@@ -2,8 +2,8 @@ BOSS FISH — GitHub orqali ahost deploy
 ======================================
 
 1) Kod GitHubda (bir marta)
-   - Repo: (push qilingandan keyin URL shu yerda)
-   - .env GitHubga KIRMAYDI
+   - Repo: https://github.com/MamadaliyevAzizbek/bossfish
+   - .env GitHubga KIRMAYDI (private repo)
 
 2) ahost Terminal (birinchi marta)
 
@@ -12,9 +12,9 @@ cd ~
 mv public_html public_html_eski_$(date +%Y%m%d) 2>/dev/null || true
 mkdir -p public_html
 
-# Clone (URL ni o‘zingiznikiga almashtiring)
+# Clone
 cd ~/public_html
-git clone https://github.com/USERNAME/REPO.git .
+git clone https://github.com/MamadaliyevAzizbek/bossfish.git .
 
 # Eski .env ni qaytarish
 cp ~/public_html_eski_*/.env ~/public_html/.env
