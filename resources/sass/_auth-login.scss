@@ -1,0 +1,332 @@
+// ============================================================
+// Login UI — BonSanté uslubidagi minimal karta
+// ============================================================
+
+$auth-mint: #e7f3ea;
+$auth-green: #47c269;
+$auth-ink: #000000;
+$auth-muted: #6b7280;
+$auth-field: #f3f4f6;
+$auth-card-radius: 2rem;
+
+.app-root.crm-app .auth-page.auth-login,
+.auth-page.auth-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: $auth-mint !important;
+  overflow: auto;
+
+  &::before {
+    display: none !important;
+  }
+
+  &.owner-gate {
+    background: $auth-mint !important;
+  }
+}
+
+.app-root.crm-app .auth-card.auth-card--login,
+.auth-card.auth-card--login {
+  position: relative;
+  z-index: 1;
+  width: min(440px, 100%);
+  padding: 1.75rem 1.75rem 1.35rem;
+  border-radius: $auth-card-radius !important;
+  background: #fff !important;
+  border: none !important;
+  box-shadow: 0 18px 48px rgba(15, 40, 25, 0.08) !important;
+  animation: rise 0.45s ease both;
+  overflow: visible; // til menyusi kesilmasin
+
+  .auth-card-top {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 2.25rem;
+    overflow: visible;
+  }
+
+  .auth-brand {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+
+    .brand-logo-image {
+      height: 1.85rem;
+      max-width: 9.25rem;
+      border-radius: 0;
+    }
+  }
+
+  .language-switcher {
+    position: relative; // absolute menu shu tugma ostida ochilsin
+    top: auto;
+    right: auto;
+    z-index: 30;
+  }
+
+  .language-button {
+    min-height: 36px;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    background: #fff;
+    color: $auth-ink;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .language-icon,
+  .language-caret {
+    color: $auth-muted;
+  }
+
+  .language-label {
+    font-size: 0.84rem;
+    font-weight: 650;
+  }
+
+  .language-menu {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    right: 0;
+    left: auto;
+    z-index: 40;
+    min-width: 140px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+
+    button {
+      color: $auth-ink;
+      border-radius: 8px;
+
+      &:hover,
+      &.active {
+        background: rgba(71, 194, 105, 0.12);
+        color: #1f7a3d;
+      }
+    }
+  }
+
+  .auth-card-body {
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0 0 0.65rem;
+    font-family: $font-display;
+    font-size: clamp(1.85rem, 4vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: $auth-ink;
+    text-transform: none;
+  }
+
+  .subtitle {
+    max-width: 28ch;
+    margin: 0 auto 1.65rem;
+    color: $auth-muted;
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  form.form-grid,
+  .form-grid.one-col {
+    display: grid;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .field {
+    margin: 0;
+
+    label {
+      display: none;
+    }
+  }
+
+  // Barcha login inputlari — bir xil o‘lcham
+  .field > input,
+  .field > .phone-input {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+    min-height: 52px;
+    max-height: 52px;
+    margin: 0;
+    padding: 0 1.15rem;
+    border: none !important;
+    border-radius: 999px !important;
+    background: $auth-field !important;
+    color: $auth-ink;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    box-shadow: none !important;
+    outline: none;
+    transition: box-shadow 0.15s ease, background 0.15s ease;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus,
+    &:focus-within,
+    &.focused {
+      background: #eef0f2 !important;
+      box-shadow: 0 0 0 2px rgba(71, 194, 105, 0.35) !important;
+    }
+  }
+
+  .field > .phone-input {
+    gap: 0.45rem;
+    overflow: hidden;
+
+    .phone-prefix {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      padding: 0;
+      background: transparent !important;
+      border: none !important;
+      color: $auth-muted !important;
+      font-size: 0.95rem;
+      font-weight: 650;
+      line-height: 1;
+    }
+
+    input {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      height: 100%;
+      min-height: 0;
+      max-height: none;
+      margin: 0;
+      padding: 0 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      color: $auth-ink;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      outline: none;
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+
+      &:focus {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .error {
+    margin: 0.15rem 0 0;
+    color: #dc2626;
+    font-size: 0.86rem;
+    text-align: left;
+  }
+
+  .btn-primary,
+  .auth-submit {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 0.35rem;
+    padding: 0.9rem 1.25rem;
+    border: none;
+    border-radius: 999px !important;
+    background: $auth-ink !important;
+    color: #fff !important;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+
+    &:hover:not(:disabled) {
+      background: #111 !important;
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+  }
+
+  .auth-card-foot {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .auth-contact {
+    margin: 0;
+    color: $auth-ink;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .auth-contact-link {
+    display: inline-block;
+    margin-top: 0.2rem;
+    color: $auth-green;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .auth-rights {
+    margin: 1.35rem 0 0;
+    color: #a3a3a3;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .auth-back {
+    display: inline-block;
+    margin-top: 0.85rem;
+    color: $auth-green;
+    font-size: 0.86rem;
+    font-weight: 650;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+}
+
+@media (max-width: 480px) {
+  .app-root.crm-app .auth-card.auth-card--login,
+  .auth-card.auth-card--login {
+    padding: 1.35rem 1.15rem 1.1rem;
+    border-radius: 1.5rem !important;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .auth-card-top {
+      margin-bottom: 1.65rem;
+    }
+  }
+}

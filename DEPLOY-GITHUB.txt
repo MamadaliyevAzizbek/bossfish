@@ -1,0 +1,41 @@
+BOSS FISH — GitHub orqali ahost deploy
+======================================
+
+1) Kod GitHubda (bir marta)
+   - Repo: (push qilingandan keyin URL shu yerda)
+   - .env GitHubga KIRMAYDI
+
+2) ahost Terminal (birinchi marta)
+
+# Eski public_html ni backup
+cd ~
+mv public_html public_html_eski_$(date +%Y%m%d) 2>/dev/null || true
+mkdir -p public_html
+
+# Clone (URL ni o‘zingiznikiga almashtiring)
+cd ~/public_html
+git clone https://github.com/USERNAME/REPO.git .
+
+# Eski .env ni qaytarish
+cp ~/public_html_eski_*/.env ~/public_html/.env
+# yoki qo‘lda .env ni File Manager dan qo‘ying
+
+# Vendor (GitHubda yo‘q)
+composer install --no-dev --optimize-autoloader
+# agar composer yo‘q: php composer.phar install --no-dev --optimize-autoloader
+
+chmod +x install.sh
+bash install.sh
+
+3) Keyingi yangilanishlar
+
+cd ~/public_html
+git pull origin main
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Bazani 0 dan tozalamoqchi bo‘lsangizgina:
+# php artisan migrate:fresh --seed --force

@@ -1,0 +1,85 @@
+BOSS FISH — ahost.cloud yangilash (mavjud .env SAQLANADI)
+==========================================================
+
+MEN (Cursor) serverga ulana olmayman — sizning ahost Terminalingizda
+quyidagi buyruqlarni ishga tushirasiz. .env ni QAYTA YOZMANG.
+
+------------------------------------------------------------
+TEZKOR YANGILASH (tavsiya)
+------------------------------------------------------------
+
+1) File Manager → /home/bossfish/public_html
+
+2) FAQAT .env ni saqlang:
+   - .env ni Download qiling (backup)
+   YOKI
+   - .env ni bir papka yuqoriga ko‘chiring: /home/bossfish/.env.bossfish.bak
+
+3) public_html ichidagi qolgan HAMMASINI o‘chiring
+   (.env ni o‘chirmang agar joyida qoldirgan bo‘lsangiz)
+
+4) boss-ahost-cpanel.zip ni Upload → Extract (public_html ga)
+
+5) Agar .env o‘chib ketgan bo‘lsa — backupdan qayta qo‘ying:
+   File Manager da .env.bossfish.bak ni public_html/.env qilib qo‘ying
+
+6) Terminal (cPanel → Terminal):
+
+cd ~/public_html
+
+# .env joyidaligini tekshirish
+ls -la .env
+head -n 5 .env
+
+# Huquqlar + o‘rnatish (ESKI BAZA TOZALANADI)
+chmod +x install.sh
+bash install.sh
+
+# Tekshiruv
+php artisan about
+curl -I https://bossfish.uz
+
+------------------------------------------------------------
+Agar install.sh ishlamasa — qo‘lda (shu .env bilan)
+------------------------------------------------------------
+
+cd ~/public_html
+
+# APP_KEY allaqachon bor — qayta generate QILMANG
+php artisan storage:link
+php artisan migrate:fresh --seed --force
+php artisan config:clear
+php artisan cache:clear
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+chmod -R 775 storage bootstrap/cache
+
+------------------------------------------------------------
+Sizning hozirgi DB (o‘zgartirmang)
+------------------------------------------------------------
+DB_DATABASE=bossfish_bossfish
+DB_USERNAME=bossfish_bossfish
+DB_HOST=localhost
+APP_URL=https://bossfish.uz
+APP_KEY= (mavjud — saqlang)
+
+Ixtiyoriy: .env ga qo‘shing (yo‘q bo‘lsa):
+SANCTUM_STATEFUL_DOMAINS=bossfish.uz,www.bossfish.uz
+AUTH_SPA_REMEMBER_DAYS=30
+MAIL_FROM_ADDRESS="noreply@bossfish.uz"
+
+------------------------------------------------------------
+Loginlar (seed dan keyin)
+------------------------------------------------------------
+Egasi:    https://bossfish.uz/egasi/kirish
+          ega@baliq.uz / Ega@2026!Strong
+Direktor: https://bossfish.uz/direktor/kirish  →  901234567 / dir1234
+Hodim:    https://bossfish.uz/hodim/kirish     →  907654321 / work1234
+
+------------------------------------------------------------
+SSH bersangiz
+------------------------------------------------------------
+Agar SSH ochiq bo‘lsa (host + login + parol/kalit), shu chatda yuboring —
+undan keyin men terminal orqali yangilab beraman.
+(Parolni chatda yuborganingiz uchun keyinroq MySQL parolini almashtirish tavsiya.)

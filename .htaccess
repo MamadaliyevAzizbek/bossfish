@@ -1,0 +1,24 @@
+# ahost / cPanel: document root = public_html (Laravel ildizi)
+# Barcha so‘rovlarni public/ ga yo‘naltiradi.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # HTTPS (SSL tayyor bo‘lgach oching)
+    # RewriteCond %{HTTPS} !=on
+    # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # public/ ichidagi fayllarga to‘g‘ridan-to‘g‘ri
+    RewriteRule ^(public/.*)$ - [L]
+
+    # Ildizdan kelgan so‘rovni public/ ga
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Ilova ildizidagi maxfiy yo‘llarni to‘g‘ridan-to‘g‘ri ochmaslik
+# (public/storage URL lariga tegmaydi — u Rewrite orqali public ga ketadi)
+<IfModule mod_rewrite.c>
+    RewriteRule ^(vendor|app|bootstrap|config|database|resources|routes|tests|node_modules|storage/logs|storage/framework)(/|$) - [F,L]
+    RewriteRule ^(\.env|\.env\..*|composer\.(json|lock)|artisan|install\.sh|CPANEL\.txt)$ - [F,L]
+</IfModule>

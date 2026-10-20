@@ -1,0 +1,457 @@
+// Venger Carp: ocean mavzusidagi oq matn ochiq fonlarda o‘qilmas edi.
+// Bu sahifalarda panel/KPI/forma — qorong‘u matn + ochiq fon.
+
+.main-owner-ocean .venger-readable {
+  color: #143226;
+
+  .page-head h1 {
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .page-head p {
+    color: #f2f7f4;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-head .btn-outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.75);
+    background: rgba(8, 24, 18, 0.35);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+    }
+  }
+
+  .empty:not(.panel) {
+    color: #f2f7f4;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  }
+
+  .panel,
+  .fish-block,
+  .vr-sheet,
+  .v-total-summary,
+  .linked-summary {
+    background: #ffffff !important;
+    color: #143226 !important;
+    border: 1px solid rgba(20, 60, 40, 0.16) !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .panel h1,
+  .panel h2,
+  .panel h3,
+  .panel th,
+  .panel td,
+  .panel strong,
+  .panel label,
+  .panel p,
+  .panel span,
+  .panel small,
+  .fish-block h3,
+  .fish-block label,
+  .fish-block p,
+  .fish-block span,
+  .vr-sheet h2,
+  .vr-sheet h3,
+  .vr-sheet p,
+  .vr-sheet span,
+  .vr-sheet strong,
+  .vr-sheet small,
+  .vr-sheet em,
+  .vr-sheet td,
+  .vr-sheet th,
+  .vr-sheet dt,
+  .vr-sheet dd {
+    color: #143226 !important;
+    text-shadow: none !important;
+  }
+
+  .panel .field-hint,
+  .panel small,
+  .field-hint,
+  .vr-mass-hint,
+  .vr-card p,
+  .vr-kpi span,
+  .vr-stat span,
+  .vr-sheet__period span,
+  .vr-bar span,
+  .v-summary-dl dt {
+    color: #3a5548 !important;
+  }
+
+  .panel .field label,
+  .field label {
+    color: #1a3328 !important;
+    font-weight: 600;
+  }
+
+  .panel .field input,
+  .panel .field select,
+  .panel .field textarea,
+  .field input,
+  .field select,
+  .field textarea {
+    background: #fff !important;
+    color: #143226 !important;
+    border: 1px solid rgba(20, 60, 40, 0.28) !important;
+  }
+
+  .panel thead th {
+    color: #2a4638 !important;
+    border-color: rgba(20, 60, 40, 0.14) !important;
+  }
+
+  .panel td {
+    color: #143226 !important;
+    border-color: rgba(20, 60, 40, 0.1) !important;
+  }
+
+  .panel .empty,
+  .empty.panel {
+    color: #3a5548 !important;
+    text-shadow: none !important;
+  }
+
+  .panel .error,
+  .error {
+    color: #b42318 !important;
+  }
+
+  .owner-kpi {
+    background: #ffffff !important;
+    border: 1px solid rgba(20, 60, 40, 0.14);
+    color: #143226 !important;
+
+    .owner-kpi-label,
+    .owner-kpi-unit {
+      color: #3a5548 !important;
+    }
+
+    .owner-kpi-value {
+      color: #0f2a1c !important;
+    }
+  }
+
+  .stock-type-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(20, 60, 40, 0.2);
+    color: #143226;
+  }
+
+  .cred-item span {
+    color: #3a5548 !important;
+  }
+
+  .cred-item strong {
+    color: #143226 !important;
+  }
+
+  .mono {
+    color: #143226 !important;
+  }
+
+  // Xavfsizlik — ochiq kartalar + qorong‘u matn
+  .sec-kpi__card,
+  .sec-tabs,
+  .sec-card,
+  .sec-cred,
+  .sec-alert {
+    color: #143226 !important;
+  }
+
+  .sec-kpi__card {
+    background: #ffffff !important;
+    border: 1px solid rgba(20, 60, 40, 0.14) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+
+    span {
+      color: #3a5548 !important;
+    }
+
+    strong {
+      color: #0f2a1c !important;
+    }
+  }
+
+  .sec-kpi__card--warn strong {
+    color: #9a3412 !important;
+  }
+
+  .sec-tabs {
+    background: #ffffff !important;
+    border: 1px solid rgba(20, 60, 40, 0.14) !important;
+  }
+
+  .sec-tabs__btn {
+    color: #1a3328 !important;
+
+    em {
+      background: rgba(10, 107, 64, 0.14) !important;
+      color: #0a6b40 !important;
+    }
+
+    &.is-active {
+      background: #0a6b40 !important;
+      color: #fff !important;
+
+      em {
+        background: rgba(255, 255, 255, 0.22) !important;
+        color: #fff !important;
+      }
+    }
+  }
+
+  .sec-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(20, 60, 40, 0.14) !important;
+
+    h3,
+    strong,
+    p,
+    span {
+      color: #143226 !important;
+      text-shadow: none !important;
+    }
+
+    .sec-card__top p,
+    .sec-card__meta span {
+      color: #3a5548 !important;
+    }
+
+    &.is-warn {
+      background: #fffbeb !important;
+      border-color: #f59e0b !important;
+    }
+
+    &.is-danger {
+      background: #fef2f2 !important;
+      border-color: #ef4444 !important;
+    }
+  }
+
+  .sec-cred {
+    background: #f4faf6 !important;
+
+    span {
+      color: #3a5548 !important;
+    }
+
+    strong {
+      color: #143226 !important;
+    }
+  }
+
+  .sec-boss h2 {
+    color: #143226 !important;
+    text-shadow: none !important;
+  }
+
+  .sec-boss p {
+    color: #3a5548 !important;
+    text-shadow: none !important;
+  }
+
+  .sec-search input {
+    background: #fff !important;
+    color: #143226 !important;
+    border: 1px solid rgba(20, 60, 40, 0.28) !important;
+  }
+
+  .sec-filters {
+    background: #eef5f0 !important;
+  }
+
+  .sec-filters__btn {
+    color: #1a3328 !important;
+
+    &.is-active {
+      background: #0a6b40 !important;
+      color: #fff !important;
+    }
+  }
+
+  .sec-alert {
+    background: #fff7ed !important;
+    border-color: #fdba74 !important;
+    color: #9a3412 !important;
+
+    strong,
+    span {
+      color: #9a3412 !important;
+    }
+  }
+
+  .sec-venger h2 {
+    color: #143226 !important;
+    text-shadow: none !important;
+  }
+
+  .sec-venger p {
+    color: #3a5548 !important;
+    text-shadow: none !important;
+  }
+
+  .panel .linkish,
+  .linkish {
+    color: #1565c0 !important;
+
+    &:hover {
+      color: #0d47a1 !important;
+    }
+  }
+
+  .badge.active {
+    color: #0f5132;
+  }
+
+  .badge.inactive {
+    color: #5c3b0a;
+  }
+
+  // Natija oynasi KPI — ochiq fon + qorong‘u matn
+  .vr-kpi {
+    background: #fff !important;
+    border: 1px solid rgba(20, 60, 40, 0.14) !important;
+    color: #143226 !important;
+
+    span {
+      color: #3a5548 !important;
+      font-weight: 600;
+    }
+
+    strong {
+      color: #0f2a1c !important;
+    }
+
+    em {
+      color: #1a5c3a !important;
+      font-weight: 600;
+    }
+
+    small {
+      color: #1a5c3a !important;
+    }
+  }
+
+  .vr-kpi--gain {
+    background: #e9f7ef !important;
+  }
+
+  .vr-kpi--fcr {
+    background: #eaf1fb !important;
+  }
+
+  .vr-kpi--daily {
+    background: #fff4e5 !important;
+  }
+
+  .vr-kpi--survival {
+    background: #f3eefc !important;
+  }
+
+  .vr-card,
+  .vr-stat,
+  .vr-notes,
+  .vr-fish-table {
+    background: #fff !important;
+    color: #143226 !important;
+  }
+
+  .vr-sheet__hero p,
+  .vr-sheet__foot,
+  .vr-sheet__foot p,
+  .vr-sheet__foot small {
+    color: #3a5548 !important;
+  }
+
+  .vr-sheet__eyebrow {
+    color: #147a4d !important;
+  }
+
+  .v-step__badge {
+    background: #147a4d;
+    color: #fff !important;
+  }
+
+  .v-summary-highlight dd,
+  .v-summary-dl dd {
+    color: #0f2a1c !important;
+  }
+
+  .linked-summary {
+    background: #e9f7ef !important;
+    color: #143226 !important;
+
+    strong,
+    span {
+      color: #143226 !important;
+    }
+  }
+
+  .btn-outline {
+    color: #143226;
+    border-color: rgba(20, 60, 40, 0.35);
+    background: #fff;
+
+    &:hover {
+      background: #f3f8f5;
+      color: #0f2a1c;
+    }
+  }
+
+  .page-head .btn-outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.75);
+    background: rgba(8, 24, 18, 0.35);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+    }
+  }
+}
+
+// Venger responsive (scoped portal helpers)
+@media (max-width: 900px) {
+  .main-owner-ocean .venger-readable {
+    .page-head {
+      align-items: stretch;
+    }
+
+    .page-head-actions {
+      width: 100%;
+    }
+
+    .panel {
+      padding: 0.95rem;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .main-owner-ocean .venger-readable {
+    .page-head h1 {
+      font-size: clamp(1.25rem, 6vw, 1.55rem);
+    }
+
+    .cred-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .fish-block {
+      padding: 0.7rem;
+    }
+
+    .v-step__badge {
+      width: 1.55rem;
+      height: 1.55rem;
+      font-size: 0.85rem;
+    }
+  }
+}

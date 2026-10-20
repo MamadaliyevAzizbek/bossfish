@@ -1,0 +1,188 @@
+// Dengiz osti fon — landing va direktor hub sahifalar
+
+@keyframes ocean-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes ocean-rays-drift {
+  0% { opacity: 0.7; transform: translateX(-2%) scale(1); }
+  100% { opacity: 0.95; transform: translateX(2%) scale(1.03); }
+}
+
+@keyframes ocean-bubble-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.55; }
+  90% { opacity: 0.3; }
+  100% {
+    transform: translateY(-110vh) translateX(12px);
+    opacity: 0;
+  }
+}
+
+@mixin ocean-rays-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    conic-gradient(from 250deg at 50% -5%, transparent 0deg, rgba(255, 220, 120, 0.13) 18deg, transparent 36deg),
+    conic-gradient(from 270deg at 48% -8%, transparent 0deg, rgba(255, 240, 180, 0.09) 12deg, transparent 28deg),
+    conic-gradient(from 290deg at 52% -6%, transparent 0deg, rgba(255, 210, 100, 0.11) 16deg, transparent 32deg);
+  animation: ocean-rays-drift 14s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  opacity: 0.82;
+}
+
+.ocean-rays {
+  @include ocean-rays-layer;
+}
+
+.ocean-bubbles {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ocean-bubble {
+  position: absolute;
+  bottom: -10%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  animation: ocean-bubble-rise linear infinite;
+}
+
+@mixin ocean-background-layers($image: '/images/landing-ocean-bg.png') {
+  .ocean-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(2, 22, 48, 0.38) 0%, rgba(1, 12, 32, 0.74) 55%, rgba(0, 8, 24, 0.9) 100%),
+      url($image) center / cover no-repeat;
+  }
+
+  .ocean-rays {
+    @include ocean-rays-layer;
+  }
+
+  .ocean-bubbles {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ocean-bubble {
+    position: absolute;
+    bottom: -10%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    animation: ocean-bubble-rise linear infinite;
+  }
+}
+
+@mixin glass-nav-card($accent) {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 1.15rem 2.6rem 1.15rem 1.1rem;
+  border-radius: 8px;
+  text-align: left;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  background: linear-gradient(135deg, rgba(8, 20, 48, 0.88) 0%, rgba(12, 28, 58, 0.82) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-left: 4px solid $accent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.32);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  .action-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    color: $accent;
+  }
+
+  .action-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 1.15rem;
+    top: 50%;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.85);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+    transform: translateY(-50%) rotate(-45deg);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(14, 32, 68, 0.94) 0%, rgba(18, 40, 78, 0.9) 100%);
+    border-color: rgba(255, 255, 255, 0.32);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+
+    &::after {
+      opacity: 1;
+      transform: translateY(-50%) translateX(3px) rotate(-45deg);
+    }
+  }
+
+  h2, h3 {
+    margin: 0;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  span {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-rays,
+  .ocean-bubble {
+    animation: none !important;
+  }
+}

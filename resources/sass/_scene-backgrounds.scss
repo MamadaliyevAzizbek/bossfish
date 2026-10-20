@@ -1,0 +1,162 @@
+@import 'ocean-theme';
+
+@keyframes scene-ken-burns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1.5%, -1%); }
+}
+
+.scene-layers {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  .scene-bg-image {
+    position: absolute;
+    inset: -4%;
+    background: center / cover no-repeat;
+    will-change: transform;
+  }
+
+  &--kenburns .scene-bg-image {
+    animation: scene-ken-burns 22s ease-in-out infinite alternate;
+  }
+
+  .ocean-rays,
+  .ocean-bubbles,
+  .ocean-bubble {
+    position: fixed;
+  }
+}
+
+@mixin scene-bg($image, $position: center, $overlay) {
+  .scene-bg-image {
+    background:
+      $overlay,
+      url($image) $position / cover no-repeat;
+  }
+}
+
+.scene-layers[data-scene='home'] {
+  @include scene-bg(
+    '/images/scenes/scene-home-coral.png',
+    center 35%,
+    linear-gradient(180deg, rgba(2, 22, 48, 0.35) 0%, rgba(1, 12, 32, 0.72) 55%, rgba(0, 8, 24, 0.88) 100%)
+  );
+}
+
+.scene-layers[data-scene='directorLogin'] {
+  @include scene-bg(
+    '/images/scenes/scene-login-dawn.png',
+    center 42%,
+    linear-gradient(180deg, rgba(18, 32, 58, 0.5) 0%, rgba(8, 18, 36, 0.78) 50%, rgba(4, 10, 24, 0.9) 100%)
+  );
+}
+
+.scene-layers[data-scene='workerLogin'] {
+  @include scene-bg(
+    '/images/scenes/scene-fishery-underwater.png',
+    center 50%,
+    linear-gradient(180deg, rgba(4, 28, 42, 0.45) 0%, rgba(2, 16, 28, 0.75) 55%, rgba(0, 8, 18, 0.92) 100%)
+  );
+}
+
+.scene-layers[data-scene='ownerLogin'] {
+  @include scene-bg(
+    '/images/scenes/scene-pond-evening.png',
+    center 38%,
+    linear-gradient(180deg, rgba(12, 20, 48, 0.55) 0%, rgba(6, 12, 32, 0.82) 55%, rgba(2, 6, 18, 0.94) 100%)
+  );
+}
+
+.scene-layers[data-scene='ponds'] {
+  @include scene-bg(
+    '/images/scenes/scene-ponds-aerial.png',
+    center 28%,
+    linear-gradient(180deg, rgba(8, 14, 32, 0.52) 0%, rgba(4, 10, 26, 0.82) 55%, rgba(2, 6, 18, 0.94) 100%)
+  );
+}
+
+.scene-layers[data-scene='branch'] {
+  @include scene-bg(
+    '/images/scenes/scene-pond-evening.png',
+    center 52%,
+    linear-gradient(180deg, rgba(16, 24, 52, 0.42) 0%, rgba(8, 14, 36, 0.76) 55%, rgba(2, 8, 22, 0.92) 100%)
+  );
+}
+
+.scene-layers[data-scene='fishery'] {
+  @include scene-bg(
+    '/images/scenes/scene-fishery-underwater.png',
+    center 46%,
+    linear-gradient(180deg, rgba(6, 32, 48, 0.4) 0%, rgba(2, 18, 32, 0.74) 55%, rgba(0, 8, 20, 0.9) 100%)
+  );
+}
+
+.scene-layers[data-scene='finance'] {
+  @include scene-bg(
+    '/images/scenes/scene-ponds-aerial.png',
+    center 68%,
+    linear-gradient(180deg, rgba(8, 18, 42, 0.52) 0%, rgba(4, 12, 32, 0.82) 55%, rgba(2, 6, 18, 0.94) 100%)
+  );
+
+  .scene-bg-image {
+    filter: saturate(0.75) hue-rotate(-12deg);
+  }
+}
+
+.scene-layers[data-scene='ownerDashboard'] {
+  @include scene-bg(
+    '/images/scenes/scene-coastal-sunset.png',
+    center 42%,
+    linear-gradient(180deg, rgba(8, 12, 28, 0.55) 0%, rgba(4, 10, 28, 0.82) 50%, rgba(2, 6, 18, 0.94) 100%)
+  );
+}
+
+.scene-layers[data-scene='ownerDirectors'] {
+  @include scene-bg(
+    '/images/scenes/scene-ocean-sunset.png',
+    center 48%,
+    linear-gradient(180deg, rgba(8, 12, 28, 0.55) 0%, rgba(4, 10, 28, 0.84) 55%, rgba(2, 6, 18, 0.94) 100%)
+  );
+}
+
+.scene-layers[data-scene='ownerWorkers'] {
+  @include scene-bg(
+    '/images/scenes/scene-fishery-underwater.png',
+    center 46%,
+    linear-gradient(180deg, rgba(6, 32, 48, 0.42) 0%, rgba(2, 18, 32, 0.76) 55%, rgba(0, 8, 20, 0.92) 100%)
+  );
+}
+
+.scene-layers[data-scene='ownerPonds'] {
+  @include scene-bg(
+    '/images/scenes/scene-ponds-aerial.png',
+    center 30%,
+    linear-gradient(180deg, rgba(20, 32, 18, 0.38) 0%, rgba(10, 20, 32, 0.74) 55%, rgba(2, 8, 22, 0.9) 100%)
+  );
+}
+
+.scene-layers[data-scene='ownerSecurity'] {
+  @include scene-bg(
+    '/images/scenes/scene-pond-evening.png',
+    center 38%,
+    linear-gradient(180deg, rgba(14, 18, 42, 0.48) 0%, rgba(6, 12, 32, 0.8) 55%, rgba(2, 6, 18, 0.94) 100%)
+  );
+}
+
+.scene-layers[data-scene='directorForm'] {
+  @include scene-bg(
+    '/images/scenes/scene-coastal-sunset.png',
+    center 52%,
+    linear-gradient(180deg, rgba(8, 12, 28, 0.58) 0%, rgba(4, 10, 26, 0.84) 55%, rgba(2, 6, 18, 0.94) 100%)
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-layers--kenburns .scene-bg-image {
+    animation: none !important;
+    inset: 0;
+  }
+}

@@ -1,0 +1,248 @@
+// BOSS dizayn tizimi — logo uslubi: oq, qora, yumshoq, tiniq
+
+$font-display: 'Outfit', system-ui, sans-serif !default;
+
+$boss-black: #111111;
+$boss-muted: #6b7280;
+$boss-border: rgba(17, 17, 17, 0.08);
+$boss-surface: #ffffff;
+$boss-bg: #f5f6f8;
+$boss-radius: 12px;
+$boss-shadow: 0 1px 3px rgba(17, 17, 17, 0.04), 0 4px 16px rgba(17, 17, 17, 0.05);
+$boss-shadow-hover: 0 4px 8px rgba(17, 17, 17, 0.06), 0 12px 28px rgba(17, 17, 17, 0.08);
+
+@mixin boss-heading {
+  font-family: $font-display;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: $boss-black;
+}
+
+@mixin boss-nav-card($accent) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem 1.2rem;
+  background: $boss-surface;
+  border: 1px solid $boss-border;
+  border-left: 3px solid $accent;
+  border-radius: $boss-radius;
+  box-shadow: $boss-shadow;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $boss-shadow-hover;
+    border-color: rgba(17, 17, 17, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: $boss-shadow;
+  }
+}
+
+.boss-nav-card__body {
+  flex: 1;
+  min-width: 0;
+
+  strong, h2, h3 {
+    @include boss-heading;
+    display: block;
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.15;
+    text-transform: none;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: $boss-muted;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: $boss-muted;
+  }
+}
+
+.boss-nav-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: $boss-muted;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.boss-nav-card:hover .boss-nav-card__arrow {
+  opacity: 0.85;
+  transform: translateX(2px);
+}
+
+// Hojalik / havza / bo‘lim tanlash — jiddiy BOSS uslubi
+@mixin boss-hub-card($accent: $boss-black) {
+  @include boss-nav-card($accent);
+  appearance: none;
+  align-items: center;
+  padding: 1.25rem 1.35rem 1.3rem 1.35rem;
+  min-height: 5.5rem;
+
+  .boss-hub-card__brand {
+    display: block;
+    margin-bottom: 0.55rem;
+    line-height: 1;
+
+    .brand-logo-image {
+      display: block;
+      height: 1.85rem;
+      width: auto;
+      max-width: 9rem;
+      object-fit: contain;
+      border-radius: 0;
+    }
+  }
+
+  .hub-section-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 0.65rem;
+    border-radius: 10px;
+    background: rgba(17, 17, 17, 0.04);
+
+    svg {
+      display: block;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .hub-section-mark--fishery   { color: #1b5e20; background: rgba(27, 94, 32, 0.1); }
+  .hub-section-mark--warehouse { color: #4a148c; background: rgba(74, 20, 140, 0.1); }
+  .hub-section-mark--finance   { color: #37474f; background: rgba(55, 71, 79, 0.1); }
+  .hub-section-mark--intake    { color: #006064; background: rgba(0, 96, 100, 0.1); }
+  .hub-section-mark--stock     { color: #283593; background: rgba(40, 53, 147, 0.1); }
+
+  .boss-hub-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  h2,
+  h3 {
+    @include boss-heading;
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  p,
+  span {
+    display: block;
+    margin: 0.4rem 0 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: $boss-muted;
+    line-height: 1.45;
+  }
+
+  .boss-nav-card__arrow {
+    font-size: 1.45rem;
+    opacity: 0.65;
+    margin-top: 0;
+  }
+
+  &:hover .boss-nav-card__arrow {
+    opacity: 1;
+  }
+}
+
+.boss-nav-card--director { border-left-color: #1565c0; }
+.boss-nav-card--worker   { border-left-color: #2e7d32; }
+.boss-nav-card--owner    { border-left-color: $boss-black; }
+
+// Direktor sahifalaridagi mavjud markup (h2/h3 + p)
+@mixin boss-nav-card-legacy($accent) {
+  @include boss-nav-card($accent);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.05rem 2.6rem 1.05rem 1.1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 1.15rem;
+    top: 50%;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid $boss-muted;
+    border-bottom: 2px solid $boss-muted;
+    opacity: 0.55;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover::after {
+    opacity: 0.9;
+    transform: translateY(-50%) translateX(2px) rotate(-45deg);
+  }
+
+  .action-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 3px;
+    background: rgba($accent, 0.1);
+    color: $accent;
+  }
+
+  .action-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  h2, h3 {
+    @include boss-heading;
+    margin: 0;
+    font-size: 1.1rem;
+    text-transform: none;
+  }
+
+  p {
+    margin: 0.3rem 0 0;
+    font-size: 0.84rem;
+    color: $boss-muted;
+    line-height: 1.4;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: $boss-muted;
+  }
+}
